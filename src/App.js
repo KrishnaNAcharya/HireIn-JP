@@ -5,8 +5,8 @@ import Job from './pages/Job';
 import SignIn from './pages/SignIn';
 import SignUp from "./pages/SignUp";
 import Header from "./components/Header";
-import FindJobs from "./pages/FindJobs"; // Import the FindJobs page
-import UploadJob from "./pages/UploadJob"; // Import the UploadJob page
+import FindJobs from "./pages/FindJobs";
+import UploadJob from "./pages/UploadJob";
 import PrivateRoute from "./components/PrivateRoute";
 import React, { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
@@ -20,7 +20,6 @@ function App() {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        // Get the user's account type from Firebase Authentication
         const accountType = user.customClaims?.accountType || user.providerData[0].providerId;
         setUserRole(accountType === 'recruiter' ? 'recruiter' : 'candidate');
       } else {
@@ -60,7 +59,7 @@ function App() {
       draggable
       pauseOnHover
       theme="light"
-/>
+    />
     </>
   );
 }
